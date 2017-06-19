@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ADB over Wifi</string>
+    <string name="settings">Settings</string>
+
+    <!-- SettingsActivity strings -->
+    <string name="pref_category_settings">Settings</string>
+    <string name="pref_port">Port</string>
+
+    <string name="pref_category_notification">Notification</string>
+    <string name="pref_notif_enabled">Show notification if enabled</string>
+    <string name="pref_notif_always">Always show notification</string>
+
+    <string name="pref_category_enabling">Enabling</string>
+    <string name="pref_toggle_wifi">Auto-toggle with Wifi</string>
+    <string name="pref_enable_boot">Auto-enable at startup</string>
+    <string name="needs_root">This app needs root permission</string>
+    <string name="aot_disabled">ADB over TCP is disabled</string>
+    <string name="aot_enabled">ADB over TCP is enabled</string>
+    <string name="aot_disable_error">Error disabling ADB over TCP</string>
+    <string name="aot_enable_error">Error enabling ADB over TCP</string>
+    <string name="wifi_off">Wifi is OFF. Enable it to use ADB over TCP</string>
+    <string name="wifi_not_connected">Wifi is not connected. Connect to a network to use ADB over TCP</string>
+    <string name="wifi_unknown_state">Unknown Wifi state</string>
+</resources>

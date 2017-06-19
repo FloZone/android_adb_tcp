@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="pref_category_settings"
+        android:title="@string/pref_category_settings">
+        <EditTextPreference
+            android:key="pref_port"
+            android:title="@string/pref_port"
+            android:defaultValue="5555"
+            android:inputType="number" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_category_notification"
+        android:title="@string/pref_category_notification">
+        <CheckBoxPreference
+            android:id="@+id/pref_notif_enabled"
+            android:key="pref_notif_enabled"
+            android:title="@string/pref_notif_enabled"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="pref_notif_always"
+            android:title="@string/pref_notif_always"
+            android:defaultValue="true"
+            android:dependency="pref_notif_enabled"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_category_enabling"
+        android:title="@string/pref_category_enabling">
+        <CheckBoxPreference
+            android:key="pref_toggle_wifi"
+            android:title="@string/pref_toggle_wifi"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:key="pref_enable_boot"
+            android:title="@string/pref_enable_boot"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>
