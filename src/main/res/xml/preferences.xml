@@ -37,4 +37,12 @@
             android:title="@string/pref_enable_boot"
             android:defaultValue="false"/>
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_category_about"
+        android:title="@string/pref_category_about">
+        <Preference
+            android:key="pref_version"
+            android:title="@string/pref_version"/>
+    </PreferenceCategory>
 </PreferenceScreen>

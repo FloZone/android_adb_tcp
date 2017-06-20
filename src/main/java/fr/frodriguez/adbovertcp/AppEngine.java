@@ -85,7 +85,7 @@ public final class AppEngine {
      */
     public static void updateDisplayedInfo(Context context) {
         // Show "ADB over TCP is enabled" info
-        if(ADBManager.isAdbOverTcpEnabled(context)) {
+        if(ADBManager.isAdbOverTcpEnabled()) {
             // Get port
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
             String port = sharedPref.getString(Preferences.KEY_PORT, Preferences.KEY_PORT_DEFAULT);

@@ -68,7 +68,7 @@ public final class ADBManager {
     /**
      * Return whether ADB over TCP is enabled or not.
      */
-    public static boolean isAdbOverTcpEnabled(Context context) {
+    public static boolean isAdbOverTcpEnabled() {
         ShellCommand shellCommand = ShellCommand.runAsRoot(new String[]{"getprop service.adb.tcp.port"});
         // Error getting ADB over TCP state
         if(shellCommand.isError()) {

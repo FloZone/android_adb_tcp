@@ -13,4 +13,5 @@ public final class Intents {
     public final static String EXTRA_TITLE   = "title";
     public final static String EXTRA_MESSAGE = "message";
     public final static String EXTRA_ENABLED = "enabled";
+
 }

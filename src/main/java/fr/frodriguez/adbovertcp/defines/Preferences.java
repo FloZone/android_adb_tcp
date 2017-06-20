@@ -5,6 +5,7 @@ package fr.frodriguez.adbovertcp.defines;
  */
 
 public final class Preferences {
+
     public static final String KEY_PORT = "pref_port";
     public static final String KEY_PORT_DEFAULT = "5555";
 
@@ -19,4 +20,7 @@ public final class Preferences {
 
     public static final String KEY_TOGGLE_WITH_WIFI = "pref_toggle_wifi";
     public static final boolean KEY_TOGGLE_WITH_WIFI_DEFAULT = false;
+
+    public static final String KEY_VERSION = "pref_version";
+
 }

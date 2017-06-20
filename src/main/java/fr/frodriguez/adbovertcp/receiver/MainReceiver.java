@@ -72,6 +72,6 @@ public class MainReceiver extends BroadcastReceiver {
                 Log.d("Croustade", "Unknown action: " + intent.getAction());
                 break;
         }
-
     }
+
 }

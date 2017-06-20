@@ -1,6 +1,7 @@
 package fr.frodriguez.adbovertcp.activity;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -8,6 +9,7 @@ import fr.frodriguez.adbovertcp.AppEngine;
 import fr.frodriguez.adbovertcp.R;
 import fr.frodriguez.adbovertcp.defines.Preferences;
 import fr.frodriguez.library.compat.AppCompatPreferenceActivity;
+import fr.frodriguez.library.utils.AppUtils;
 
 /**
  * By FloZone on 12/02/2017.
@@ -40,8 +42,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
         sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
 
-        // Set the Port value as its summary
+        // Set the Port value as summary
         findPreference(Preferences.KEY_PORT).setSummary(sharedPreferences.getString(Preferences.KEY_PORT, ""));
+
+        // Set the version name as summary
+        findPreference(Preferences.KEY_VERSION).setSummary(AppUtils.getAppVersion(this));
     }
 
     @Override
