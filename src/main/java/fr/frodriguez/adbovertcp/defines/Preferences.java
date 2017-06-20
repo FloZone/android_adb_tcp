@@ -22,5 +22,6 @@ public final class Preferences {
     public static final boolean KEY_TOGGLE_WITH_WIFI_DEFAULT = false;
 
     public static final String KEY_VERSION = "pref_version";
+    public static final String KEY_LICENSE = "pref_license";
 
 }

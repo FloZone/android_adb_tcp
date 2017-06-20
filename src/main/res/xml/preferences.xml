@@ -44,5 +44,8 @@
         <Preference
             android:key="pref_version"
             android:title="@string/pref_version"/>
+        <Preference
+            android:key="pref_license"
+            android:title="@string/pref_license"/>
     </PreferenceCategory>
 </PreferenceScreen>
