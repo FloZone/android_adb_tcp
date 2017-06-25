@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         android:key="pref_category_settings"
         android:title="@string/pref_category_settings">
@@ -41,6 +42,9 @@
     <PreferenceCategory
         android:key="pref_category_about"
         android:title="@string/pref_category_about">
+        <Preference
+            android:key="pref_tuto"
+            android:title="@string/pref_tuto"/>
         <Preference
             android:key="pref_version"
             android:title="@string/pref_version"/>

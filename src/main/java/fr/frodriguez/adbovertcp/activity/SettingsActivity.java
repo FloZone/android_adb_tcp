@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,8 +34,19 @@ import fr.frodriguez.library.utils.AppUtils;
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
+    private final static String tutorialText = "Thanks for downloading my app !<br/><br/>" +
+            "This application enables or disables ADB over TCP:<br/>" +
+            "It allows an ADB connection between your device and your computer without an USB cable.<br/><br/>" +
+            "Your device and your computer must be on the same Wifi access point.<br/>" +
+            "This app needs root privileges in order to work.<br/><br/>" +
+            "It also needs the following permissions:<br/>" +
+            "\u2022 <b>RECEIVE_BOOT_COMPLETED:</b><br/>auto-enable ADB over TCP when the device starts (only if enabled)<br/><br/>" +
+            "\u2022 <b>ACCESS_WIFI_STATE:</b><br/>auto-enable/disable ADB over TCP when the device connects or disconnects to an access point (only if enabled)<br/><br/>" +
+            "If you encounter some issues, please feel free to send me details on my email present on the PlayStore.<br/><br/>" +
+            "♥";
+
     // Licences list
-    private static List<License> licenses = new ArrayList<License>(){{
+    private final static List<License> licenses = new ArrayList<License>(){{
         add(new License("Butter Knife","Apache License, Version 2.0","http://www.apache.org/licenses/LICENSE-2.0"));
         add(new License("Google Material Icons","Apache License, Version 2.0","http://www.apache.org/licenses/LICENSE-2.0"));
         add(new License("Android Material Icon Generator","Attribution-NonCommercial 3.0 License","https://creativecommons.org/licenses/by-nc/3.0/"));
@@ -67,6 +79,22 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         // Set the Port value as summary
         findPreference(Preferences.KEY_PORT).setSummary(sharedPreferences.getString(Preferences.KEY_PORT, ""));
+
+        // Display tutorial popup
+        findPreference(Preferences.KEY_TUTO).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogview = inflater.inflate(R.layout.dialog_tuto, null);
+                TextView textview = (TextView) dialogview.findViewById(R.id.tv_tuto);
+                textview.setText(Html.fromHtml(tutorialText));
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(SettingsActivity.this);
+                alertDialog.setView(dialogview);
+                alertDialog.show();
+                return true;
+            }
+        });
 
         // Set the version name as summary
         findPreference(Preferences.KEY_VERSION).setSummary(AppUtils.getAppVersion(this));
@@ -104,7 +132,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 });
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(SettingsActivity.this);
-
                 alertDialog.setView(dialogview);
                 alertDialog.show();
 

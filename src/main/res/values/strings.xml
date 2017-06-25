@@ -12,6 +12,7 @@
     <string name="pref_toggle_wifi">Auto-toggle with Wifi</string>
     <string name="pref_enable_boot">Auto-enable at startup</string>
     <string name="pref_category_about">About</string>
+    <string name="pref_tuto">How it works</string>
     <string name="pref_version">Version</string>
     <string name="pref_license">Licences</string>
 

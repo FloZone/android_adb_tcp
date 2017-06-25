@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="16dp"
     android:weightSum="1">
 
     <LinearLayout
@@ -14,39 +15,36 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="0.4"
-        android:background="@color/colorPrimaryLight"
-        android:gravity="center"
-        >
-        <Switch
-            android:id="@+id/adbSwitch"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            />
+            android:textSize="16sp"
+            android:text="ADB state" />
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            android:text="Wifi information" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="0.6"
-        android:gravity="center_horizontal"
-        >
-        <TextView
-            android:id="@+id/state"
+        android:gravity="center_horizontal">
+        <Switch
+            android:id="@+id/adbSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="ADB state"
-            />
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Wifi information"
-            />
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
     </LinearLayout>
 
 </LinearLayout>
