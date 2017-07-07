@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.kyleduo.switchbutton.SwitchButton;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -25,7 +27,7 @@ import fr.frodriguez.library.utils.AppUtils;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.adbSwitch)
-    Switch adbSwitch;
+    SwitchButton adbSwitch;
     @BindView(R.id.state)
     TextView tvState;
     @BindView(R.id.info)

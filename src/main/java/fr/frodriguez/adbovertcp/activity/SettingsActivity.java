@@ -50,6 +50,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         add(new License("Butter Knife","Apache License, Version 2.0","http://www.apache.org/licenses/LICENSE-2.0"));
         add(new License("Google Material Icons","Apache License, Version 2.0","http://www.apache.org/licenses/LICENSE-2.0"));
         add(new License("Android Material Icon Generator","Attribution-NonCommercial 3.0 License","https://creativecommons.org/licenses/by-nc/3.0/"));
+        add(new License("SwitchButton by kyleduo","Apache License, Version 2.0","http://www.apache.org/licenses/LICENSE-2.0"));
     }};
 
 
