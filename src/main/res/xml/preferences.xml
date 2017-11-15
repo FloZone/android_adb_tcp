@@ -22,7 +22,7 @@
         <CheckBoxPreference
             android:key="pref_notif_always"
             android:title="@string/pref_notif_always"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:dependency="pref_notif_enabled"/>
     </PreferenceCategory>
 

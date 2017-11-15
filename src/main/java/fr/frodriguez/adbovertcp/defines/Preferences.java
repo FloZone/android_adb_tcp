@@ -6,6 +6,9 @@ package fr.frodriguez.adbovertcp.defines;
 
 public final class Preferences {
 
+    public static final String KEY_APP_ACTIVE = "pref_active";
+    public static final boolean KEY_APP_ACTIVE_DEFAULT = false;
+
     public static final String KEY_PORT = "pref_port";
     public static final String KEY_PORT_DEFAULT = "5555";
 

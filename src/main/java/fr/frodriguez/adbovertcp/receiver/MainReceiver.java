@@ -8,8 +8,10 @@ import android.net.ConnectivityManager;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 
+import fr.frodriguez.adbovertcp.ADBManager;
 import fr.frodriguez.adbovertcp.AppEngine;
 import fr.frodriguez.adbovertcp.defines.Preferences;
+import fr.frodriguez.library.ShellCommand;
 import fr.frodriguez.library.utils.WifiUtils;
 
 import static fr.frodriguez.adbovertcp.defines.Intents.ACTION_DISABLE;
@@ -23,10 +25,13 @@ public class MainReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("Croustade", "Intent received: " + intent);
+        Log.d("FLZ", "Intent received: " + intent);
+
+        String action = intent.getAction();
+        if (action == null) return;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        switch (intent.getAction()) {
+        switch (action) {
             case ACTION_ENABLE:
                 AppEngine.enableAdbOverTcp(context);
                 break;
@@ -63,13 +68,19 @@ public class MainReceiver extends BroadcastReceiver {
                         AppEngine.disableAdbOverTcp(context);
                     }
                 }
+                // Update the displayed info only if main activity is open, if "always notif" is enabled, or if "notif on enabled" & ADB TCP are enabled
                 else {
-                    AppEngine.updateDisplayedInfo(context);
+                    boolean appActive = sharedPref.getBoolean(Preferences.KEY_APP_ACTIVE, Preferences.KEY_APP_ACTIVE_DEFAULT);
+                    boolean alwaysNotif = sharedPref.getBoolean(Preferences.KEY_NOTIF_ALWAYS, Preferences.KEY_NOTIF_ALWAYS_DEFAULT);
+                    boolean enabledNotif = sharedPref.getBoolean(Preferences.KEY_NOTIF_ENABLED, Preferences.KEY_NOTIF_ENABLED_DEFAULT);
+                    if(appActive || alwaysNotif || (enabledNotif && ADBManager.isAdbOverTcpEnabled())) {
+                        AppEngine.updateDisplayedInfo(context);
+                    }
                 }
                 break;
 
             default:
-                Log.d("Croustade", "Unknown action: " + intent.getAction());
+                Log.d("FLZ", "Unknown action: " + intent.getAction());
                 break;
         }
     }

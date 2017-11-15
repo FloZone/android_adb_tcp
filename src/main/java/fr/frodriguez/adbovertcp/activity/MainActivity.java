@@ -4,12 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.kyleduo.switchbutton.SwitchButton;
@@ -20,10 +20,13 @@ import butterknife.OnClick;
 import fr.frodriguez.adbovertcp.AppEngine;
 import fr.frodriguez.adbovertcp.R;
 import fr.frodriguez.adbovertcp.defines.Intents;
+import fr.frodriguez.adbovertcp.defines.Preferences;
 import fr.frodriguez.library.utils.AppUtils;
 
 
 @SuppressWarnings("unused")
+//TODO refactor + warning + opti imports
+//TODO html page for how it works
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.adbSwitch)
@@ -72,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Display ADB over TCP state & info
         AppEngine.updateDisplayedInfo(this);
+        // Save that the main activity is displayed
+        SharedPreferences.Editor spe = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        spe.putBoolean(Preferences.KEY_APP_ACTIVE, true);
+        spe.apply();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save that the main activity is not displayed
+        SharedPreferences.Editor spe = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        spe.putBoolean(Preferences.KEY_APP_ACTIVE, false);
+        spe.apply();
     }
 
     @Override
