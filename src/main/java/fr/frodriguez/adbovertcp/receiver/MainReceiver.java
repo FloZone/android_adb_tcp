@@ -11,7 +11,6 @@ import android.util.Log;
 import fr.frodriguez.adbovertcp.ADBManager;
 import fr.frodriguez.adbovertcp.AppEngine;
 import fr.frodriguez.adbovertcp.defines.Preferences;
-import fr.frodriguez.library.ShellCommand;
 import fr.frodriguez.library.utils.WifiUtils;
 
 import static fr.frodriguez.adbovertcp.defines.Intents.ACTION_DISABLE;
@@ -42,17 +41,15 @@ public class MainReceiver extends BroadcastReceiver {
 
             case Intent.ACTION_BOOT_COMPLETED:
                 boolean bootEnabled = sharedPref.getBoolean(Preferences.KEY_ENABLE_BOOT, Preferences.KEY_ENABLE_BOOT_DEFAULT);
-                if(bootEnabled) {
+                if (bootEnabled) {
                     boolean wifiToggle = sharedPref.getBoolean(Preferences.KEY_TOGGLE_WITH_WIFI, Preferences.KEY_TOGGLE_WITH_WIFI_DEFAULT);
-                    if(wifiToggle) {
-                        if(WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
+                    if (wifiToggle) {
+                        if (WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
                             AppEngine.enableAdbOverTcp(context);
-                        }
-                        else {
+                        } else {
                             AppEngine.disableAdbOverTcp(context);
                         }
-                    }
-                    else {
+                    } else {
                         AppEngine.enableAdbOverTcp(context);
                     }
                 }
@@ -60,11 +57,10 @@ public class MainReceiver extends BroadcastReceiver {
 
             case ConnectivityManager.CONNECTIVITY_ACTION:
                 boolean wifiToggle = sharedPref.getBoolean(Preferences.KEY_TOGGLE_WITH_WIFI, Preferences.KEY_TOGGLE_WITH_WIFI_DEFAULT);
-                if(wifiToggle) {
-                    if(WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
+                if (wifiToggle) {
+                    if (WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
                         AppEngine.enableAdbOverTcp(context);
-                    }
-                    else {
+                    } else {
                         AppEngine.disableAdbOverTcp(context);
                     }
                 }
@@ -73,7 +69,7 @@ public class MainReceiver extends BroadcastReceiver {
                     boolean appActive = sharedPref.getBoolean(Preferences.KEY_APP_ACTIVE, Preferences.KEY_APP_ACTIVE_DEFAULT);
                     boolean alwaysNotif = sharedPref.getBoolean(Preferences.KEY_NOTIF_ALWAYS, Preferences.KEY_NOTIF_ALWAYS_DEFAULT);
                     boolean enabledNotif = sharedPref.getBoolean(Preferences.KEY_NOTIF_ENABLED, Preferences.KEY_NOTIF_ENABLED_DEFAULT);
-                    if(appActive || alwaysNotif || (enabledNotif && ADBManager.isAdbOverTcpEnabled())) {
+                    if (appActive || alwaysNotif || (enabledNotif && ADBManager.isAdbOverTcpEnabled())) {
                         AppEngine.updateDisplayedInfo(context);
                     }
                 }

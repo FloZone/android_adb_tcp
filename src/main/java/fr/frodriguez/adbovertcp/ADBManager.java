@@ -1,6 +1,7 @@
 package fr.frodriguez.adbovertcp;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import fr.frodriguez.library.ShellCommand;
@@ -15,9 +16,10 @@ public final class ADBManager {
 
     /**
      * Enable ADB over TCP
+     *
      * @return true in case of success, false if an error occurs
      */
-    public static boolean enableAdbOverTcp(Context context, String port) {
+    public static boolean enableAdbOverTcp(@NonNull Context context, @NonNull String port) {
         // Enable ADB over TCP and restart ADB
         String[] commands = {
                 "setprop service.adb.tcp.port " + port,
@@ -35,15 +37,15 @@ public final class ADBManager {
             );
             return false;
         }
-
         return true;
     }
 
     /**
      * Disable ADB over TCP
+     *
      * @return true if ADB over TCP is disabled, false if an error occurs
      */
-    public static boolean disableAdbOverTcp(Context context) {
+    public static boolean disableAdbOverTcp(@NonNull Context context) {
         // Commands to disable ADB over TCP
         String[] commands = {
                 "setprop service.adb.tcp.port -1",
@@ -68,17 +70,18 @@ public final class ADBManager {
     /**
      * Return whether ADB over TCP is enabled or not.
      */
+    @SuppressWarnings("RedundantIfStatement")
     public static boolean isAdbOverTcpEnabled() {
         ShellCommand shellCommand = ShellCommand.runSimpleCommand("getprop service.adb.tcp.port");
 
         // Error getting ADB over TCP state
-        if(shellCommand.isError()) {
+        if (shellCommand.isError()) {
             Log.d("FLZ", shellCommand.getError()
                     + "\n" + shellCommand.getLocalError());
             return false;
         }
         // ADB over TCP disabled
-        else if(StringUtils.isEmpty(shellCommand.getOutput())
+        else if (StringUtils.isEmpty(shellCommand.getOutput())
                 || shellCommand.getOutput().equals("-1")) {
             return false;
         }
@@ -87,4 +90,5 @@ public final class ADBManager {
             return true;
         }
     }
+
 }
