@@ -26,6 +26,7 @@ import fr.frodriguez.library.utils.AppUtils;
 
 @SuppressWarnings("unused")
 //TODO html page for how it works + licences info in an xml file (if possible)
+//TODO widget with switch
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.adbSwitch)

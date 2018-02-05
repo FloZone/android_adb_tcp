@@ -76,8 +76,7 @@ public final class ADBManager {
 
         // Error getting ADB over TCP state
         if (shellCommand.isError()) {
-            Log.d("FLZ", shellCommand.getError()
-                    + "\n" + shellCommand.getLocalError());
+            //Log.d("FLZ", "Error getting adb tcp state: " + shellCommand.getError()+ "\n" + shellCommand.getLocalError());
             return false;
         }
         // ADB over TCP disabled

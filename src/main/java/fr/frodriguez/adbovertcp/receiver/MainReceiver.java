@@ -40,8 +40,10 @@ public class MainReceiver extends BroadcastReceiver {
                 break;
 
             case Intent.ACTION_BOOT_COMPLETED:
+                // If 'auto enable on boot" is enabled
                 boolean bootEnabled = sharedPref.getBoolean(Preferences.KEY_ENABLE_BOOT, Preferences.KEY_ENABLE_BOOT_DEFAULT);
                 if (bootEnabled) {
+                    // If "auto toggle with wifi" is enabled
                     boolean wifiToggle = sharedPref.getBoolean(Preferences.KEY_TOGGLE_WITH_WIFI, Preferences.KEY_TOGGLE_WITH_WIFI_DEFAULT);
                     if (wifiToggle) {
                         if (WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
@@ -56,6 +58,7 @@ public class MainReceiver extends BroadcastReceiver {
                 break;
 
             case ConnectivityManager.CONNECTIVITY_ACTION:
+                // If "auto toggle with wifi" is enabled
                 boolean wifiToggle = sharedPref.getBoolean(Preferences.KEY_TOGGLE_WITH_WIFI, Preferences.KEY_TOGGLE_WITH_WIFI_DEFAULT);
                 if (wifiToggle) {
                     if (WifiUtils.getWifiState(context).equals(WifiUtils.WifiState.WIFI_CONNECTED)) {
@@ -64,7 +67,7 @@ public class MainReceiver extends BroadcastReceiver {
                         AppEngine.disableAdbOverTcp(context);
                     }
                 }
-                // Update the displayed info only if main activity is open, if "always notif" is enabled, or if "notif on enabled" & ADB TCP are enabled
+                // Else update the displayed info only if main activity is open, if "always notif" is enabled, or if "notif on enabled" & ADB TCP are enabled
                 else {
                     boolean appActive = sharedPref.getBoolean(Preferences.KEY_APP_ACTIVE, Preferences.KEY_APP_ACTIVE_DEFAULT);
                     boolean alwaysNotif = sharedPref.getBoolean(Preferences.KEY_NOTIF_ALWAYS, Preferences.KEY_NOTIF_ALWAYS_DEFAULT);

@@ -16,7 +16,7 @@ public final class Preferences {
     public static final boolean KEY_NOTIF_ENABLED_DEFAULT = true;
 
     public static final String KEY_NOTIF_ALWAYS = "pref_notif_always";
-    public static final boolean KEY_NOTIF_ALWAYS_DEFAULT = true;
+    public static final boolean KEY_NOTIF_ALWAYS_DEFAULT = false;
 
     public static final String KEY_ENABLE_BOOT = "pref_enable_boot";
     public static final boolean KEY_ENABLE_BOOT_DEFAULT = false;
