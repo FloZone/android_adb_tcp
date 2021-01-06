@@ -1,8 +1,7 @@
 package fr.frodriguez.adbovertcp;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.Log;
+import androidx.annotation.NonNull;
 
 import fr.frodriguez.library.ShellCommand;
 import fr.frodriguez.library.utils.MessageUtils;

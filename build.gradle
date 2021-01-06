@@ -1,34 +1,23 @@
 apply plugin: 'com.android.application'
 
-android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+project.setGlobalConfiguration(project)
 
+android {
     defaultConfig {
         applicationId "fr.frodriguez.adbtcp"
-        minSdkVersion 19
-        targetSdkVersion 26
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        manifestPlaceholders = [sharedUserId:"fr.frodriguez.id"]
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':libraries')
 
-    compile project(':libraries')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:preference-v7:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:support-compat:26.1.0'
+    // Butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 
-    compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
-    compile 'com.kyleduo.switchbutton:library:1.4.6'
+    // Custom switch button
+    implementation 'com.kyleduo.switchbutton:library:1.4.6'
 }
